@@ -4,55 +4,55 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-"use strict";
+'use strict'
 
-import { Buffer } from "buffer";
-
+import { Buffer } from 'buffer'
+let id = 1
 class Utils {
-  static genId() {
-    return new Date().getTime() + Math.floor(Math.random() * 1000);
+  static genId () {
+    return id++
   }
 
-  static flatMap(array, func) {
-    return [].concat(...array.map(func));
+  static flatMap (array, func) {
+    return [].concat(...array.map(func))
   }
 
-  static intRange(from, to) {
+  static intRange (from, to) {
     if (from >= to) {
-      return [];
+      return []
     }
-    return new Array(to - from).fill().map((_, i) => i + from);
+    return new Array(to - from).fill().map((_, i) => i + from)
   }
 
-  static hexToInt(hexString) {
+  static hexToInt (hexString) {
     if (hexString === undefined || hexString === null) {
-      return hexString;
+      return hexString
     }
-    return Number.parseInt(hexString, 16);
+    return Number.parseInt(hexString, 16)
   }
 
-  static intToHex(int) {
+  static intToHex (int) {
     if (int === undefined || int === null) {
-      return int;
+      return int
     }
-    let hexString = int.toString(16);
-    return "0x" + hexString;
+    let hexString = int.toString(16)
+    return '0x' + hexString
   }
 
   // message: Bytes | string
-  static messageToBuffer(message) {
-    var buffer;
-    if ((typeof (message) === "string")) {
-      buffer = Buffer.from(message.replace("0x", ""), "hex");
+  static messageToBuffer (message) {
+    var buffer
+    if ( (typeof (message) === 'string')) {
+      buffer = Buffer.from(message.replace('0x', ''), 'hex')
     } else {
-      buffer = Buffer.from(message);
+      buffer = Buffer.from(message)
     }
-    return buffer;
+    return buffer
   }
 
-  static bufferToHex(buf) {
-    return "0x" + Buffer.from(buf).toString("hex");
+  static bufferToHex (buf) {
+    return '0x' + Buffer.from(buf).toString('hex')
   }
 }
 
-module.exports = Utils;
+module.exports = Utils
